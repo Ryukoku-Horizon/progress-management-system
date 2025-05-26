@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "ES5", // GASはES5ベースの実行環境が多いですが、適宜変更可能
+    "lib": ["ESNext"], // 必要に応じて "DOM" なども追加
+    "types": ["google-apps-script"], // ここで型定義を指定
+    "moduleResolution": "node", // npmパッケージの型定義を解決するため
+    "experimentalDecorators": true, // デコレータを使用する場合 (通常GASではあまり使わない)
+    "emitDecoratorMetadata": true, // デコレータを使用する場合
+    "allowSyntheticDefaultImports": true, // ES6スタイルのimportを許容
+    "checkJs": false // trueにするとより厳密な型チェックが行われるが、既存コードでエラーが出る場合も
+  },
+  "exclude": ["node_modules"] // node_modulesは通常チェック対象外
+  // "include": ["**/*.js", "**/*.gs"] // 必要に応じて対象ファイルを明示的に指定
+}

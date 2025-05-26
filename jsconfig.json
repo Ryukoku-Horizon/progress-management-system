@@ -10,6 +10,6 @@
     "allowSyntheticDefaultImports": true, // ES6スタイルのimportを許容
     "checkJs": false // trueにするとより厳密な型チェックが行われるが、既存コードでエラーが出る場合も
   },
-  "exclude": ["node_modules"] // node_modulesは通常チェック対象外
-  // "include": ["**/*.js", "**/*.gs"] // 必要に応じて対象ファイルを明示的に指定
+  "exclude": ["node_modules"],  // node_modulesは通常チェック対象外
+  "include": ["**/*.js", "**/*.gs"] // 必要に応じて対象ファイルを明示的に指定
 }

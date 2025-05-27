@@ -15,3 +15,13 @@ function _getKeyAndValuesFromSheet(sheetId) {
     }
     return obj;
 }
+
+function getSettings() {
+    // 設定シートに格納された設定値は例外的にIDをハードコード
+    const sheetId = 1218501673;
+    return _getKeyAndValuesFromSheet(sheetId);
+}
+
+function getFormSettings(sheetId) {
+    return _getKeyAndValuesFromSheet(sheetId);
+}

@@ -235,11 +235,11 @@ GASの動作に必要な設定値を一元管理します。
 
 | A列 (キー)                          | B列 (設定値 : 例)            | C列 (設定項目の説明)                         |
 | ----------------------------------- | ---------------------------- | -------------------------------------------- |
-| `formResponseSheetId`               | `フォームの回答 1`           | フォーム回答シートのID                       |
-| `problemMasterSheetId`              | `問題マスター`               | 問題マスターシートのID                       |
-| `memberListSheetId`                 | `部員名簿`                   | 部員名簿シートのID                           |
-| `progressListSheetId`               | `進捗一覧`                   | 進捗一覧シートのID                           |
-| `formSettingsSheetId`               | `フォーム設定`               | フォーム設定シートのID                       |
+| `formResponseSheetId`               | `0123456789`                 | フォーム回答シートのID                       |
+| `problemMasterSheetId`              | `0123456789`                 | 問題マスターシートのID                       |
+| `memberListSheetId`                 | `0123456789`                 | 部員名簿シートのID                           |
+| `progressListSheetId`               | `0123456789`                 | 進捗一覧シートのID                           |
+| `formSettingsSheetId`               | `0123456789`                 | フォーム設定シートのID                       |
 | `formResponseStudentNameColIndex`   | `8`                          | フォーム回答収集シートの氏名記録列番号 (H=8) |
 | `formResponseStudentCampusColIndex` | `9`                          | フォーム回答収集シートの記録学舎列番号 (I=9) |
 | `progressListProblemIdRowIndex`     | `1`                          | 進捗一覧シートの問題IDの行番号               |

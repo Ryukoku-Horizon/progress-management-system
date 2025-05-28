@@ -52,6 +52,13 @@ class ProblemMasterManager {
         return null;
     }
 
+    /**
+     * 優先度でソートされた問題名とカテゴリのマップを返します。
+     *
+     * @param {boolean} [reverse=false] - trueの場合は優先度の降順、falseの場合は昇順でソートします。
+     * @param {boolean} [only_enable=true] - trueの場合は有効な問題のみ、falseの場合はすべての問題を含めます。
+     * @returns {Map<string, string>} キーが問題名、値がカテゴリのマップを返します。
+     */
     getProblemsList(reverse = false, only_enable = true) {
         // 問題データのコピーを作成
         this.sortedData = this.problemsData.slice();

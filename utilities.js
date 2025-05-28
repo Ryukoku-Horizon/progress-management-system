@@ -9,7 +9,14 @@
 function _getKeyAndValuesFromSheet(sheetId) {
     const ss = SpreadsheetApp.getActiveSpreadsheet();
     const sheet = ss.getSheetById(sheetId);
+    if (!sheet) {
+        throw new Error(`ID ${sheetId} のシートが見つかりません。`);
+    }
     const data = sheet.getDataRange().getValues();
+    if (data.length === 0) {
+        throw new Error(`ID ${sheetId} のシートにはデータがありません。`);
+    }
+    // ヘッダー行はないものとして処理
     const obj = {};
     for (let i = 0; i < data.length; i++) {
         // 各行の１番目のセルをキー、２番目のセルを値としてオブジェクトに格納

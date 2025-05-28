@@ -13,4 +13,8 @@ function getProblemsMasterTest() {
     const pmm = new ProblemMasterManager(settings.problemMasterSheetId);
     console.log(pmm.getProblemId("Python - 練習問題1"));
     console.log(pmm.getProblemPriority("python-prac3"));
+    const map = pmm.getProblemsList(reverse = false);
+    for (const [key, value] of map) {
+        console.log(key, value);
+    }
 }

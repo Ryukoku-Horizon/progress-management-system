@@ -51,4 +51,27 @@ class ProblemMasterManager {
         // 見つからない場合nullを返す
         return null;
     }
+
+    getProblemsList(reverse = false, only_enable = true) {
+        // 問題データのコピーを作成
+        this.sortedData = this.problemsData.slice();
+        // 優先度でソート
+        if (!reverse) { // reverseがfalseの場合は昇順
+            this.sortedData.sort((a, b) => a[4] - b[4]);
+        } else {    // reverseがtrueの場合は降順
+            this.sortedData.sort((a, b) => b[4] - a[4]);
+        }
+        // 問題データを 名 : カテゴリ でマップに変換
+        const problemsMap = new Map();
+        for (let i = 0; i<this.sortedData.length; i++) {
+            // 有効フラグが true の場合、または only_enable が false の場合にマップに追加
+            if (this.sortedData[i][3] === true || !only_enable) {
+                console.log("マップに追加");
+                const problemName = this.sortedData[i][1]; // 問題名は2列目
+                const problemCategory = this.sortedData[i][2]; // カテゴリは3列目
+                problemsMap.set(problemName, problemCategory);
+            }
+        }
+        return problemsMap;
+    }
 }

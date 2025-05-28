@@ -10,5 +10,7 @@ function getProblemsMasterTest() {
     settings = getSettings();
     console.log("settings:", settings);
 
-    new ProblemsMasterManager(settings.problemMasterSheetId);
+    const pmm = new ProblemMasterManager(settings.problemMasterSheetId);
+    console.log(pmm.getProblemId("Python - 練習問題1"));
+    console.log(pmm.getProblemPriority("python-prac3"));
 }

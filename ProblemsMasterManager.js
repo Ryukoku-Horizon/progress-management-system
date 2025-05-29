@@ -8,16 +8,16 @@ class ProblemMasterManager {
      * @throws {Error} シートにデータが存在しない場合にスローされます。
      */
     constructor(problemsMasterSheetId) {
-        this.problemsMasterSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetById(problemsMasterSheetId)
+        this.problemsMasterSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetById(problemsMasterSheetId);
         if (!this.problemsMasterSheet) {
             throw new Error(`ID ${problemsMasterSheetId} のシートが見つかりません。`);
         }
         this.problemsData = this.problemsMasterSheet.getDataRange().getValues();
+        // ヘッダー行を除いてデータを取得
+        this.problemsData =  this.problemsData.slice(1);
         if (!this.problemsData) {
             throw new Error(`ID ${problemsMasterSheetId} のシートにデータがありません。`);
         }
-        // ヘッダー行を除いてデータを取得
-        this.problemsData =  this.problemsData.slice(1);
     }
 
     /**

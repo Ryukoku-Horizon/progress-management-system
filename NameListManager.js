@@ -24,4 +24,40 @@ class NameListManager {
         this.nameColIndex = nameColIndex;
         this.campusColIndex = campusColIndex;
     }
+
+    /**
+     * 指定された学籍番号に対応する学生の名前を取得する
+     * 
+     * @param {string} studentNumber - 検索する学生の学籍番号
+     * @returns {string|null} 学生の名前。該当する学生が見つからない場合はnull
+     */
+    getName(studentNumber) {
+        for (let i = 0; i<this.nameListData.length; i++) {
+            const row = this.nameListData[i];
+            if (row[this.numberColIndex] === studentNumber) {
+                // 学籍番号が一致したら名前を返す
+                return row[this.nameColIndex];
+            }
+        }
+        // 該当する学生番号が見つからない場合はnullを返す
+        return null;
+    }
+
+    /**
+     * 指定された学籍番号に対応する学生のキャンパス情報を取得する
+     * 
+     * @param {string} studentNumber - 検索する学生の学籍番号
+     * @returns {string|null} 学生のキャンパス情報。該当する学生が見つからない場合はnull
+     */
+    getCampus(studentNumber) {
+        for (let i = 0; i<this.nameListData.length; i++) {
+            const row = this.nameListData[i];
+            if (row[this.numberColIndex] === studentNumber) {
+                // 学籍番号が一致したら学舎を返す
+                return row[this.campusColIndex];
+            }
+        }
+        // 該当する学生番号が見つからない場合はnullを返す
+        return null;
+    }
 }

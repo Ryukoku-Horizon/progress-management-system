@@ -18,3 +18,10 @@ function getProblemsMasterTest() {
         console.log(key, value);
     }
 }
+
+function formManagerTest() {
+    settings = getSettings();
+
+    fm = new FormManager(settings.formId);
+    fm.printItemsId();
+}

@@ -25,3 +25,18 @@ function formManagerTest() {
     fm = new FormManager(settings.formId);
     fm.printItemsId();
 }
+
+function updateFormSelectionTest() {
+    settings = getSettings();
+    const formSettings = getFormSettings(settings.formSettingsSheetId);
+    const pmm = new ProblemMasterManager(settings.problemMasterSheetId);
+    const problemsMap = pmm.getProblemsList(reverse = false, only_enable = true);
+
+    fm = new FormManager(settings.formId);
+    fm.updateProblemsSelection(
+        formSettings.problemSelectQuestionId,
+        problemsMap,
+        formSettings.understandingSectionId,
+        formSettings.uploadFileSectionId
+    );
+}

@@ -58,4 +58,37 @@ class ProgressListManager {
         }
         return -1; // 見つからない場合は-1を返す
     }
-}
+
+    registerProgress(studentNumber, studentName, studentCampus, problemId, problemName) {
+        let studentRow = this._findStudentNumberRow(studentNumber);
+        if (studentRow === -1) {
+            // 学生番号が見つからない場合は新規行を追加
+            studentRow = this.progressSheet.getLastRow();   // 新規行のため +1
+            this.progressSheet.getRange(studentRow, this.studentNumberColIndex+1).setValue(studentNumber);
+            this.progressSheet.getRange(studentRow, this.studentNameColIndex+1).setValue(studentName);
+            this.progressSheet.getRange(studentRow, this.studentCampusColIndex+1).setValue(studentCampus);
+        } else {
+            // スプレッドシートのために1始まりのインデックスに変換
+            studentRow += 1;
+            // 学生番号が見つかった場合は既存の行を更新
+            this.progressSheet.getRange(studentRow, this.studentNameColIndex+1).setValue(studentName);
+            this.progressSheet.getRange(studentRow, this.studentCampusColIndex+1).setValue(studentCampus);
+        }
+
+        let problemCol = this._findProblemIdColumn(problemId);
+        if (problemCol === -1) {
+            // 問題IDが見つからない場合は新規列を追加
+            problemCol = this.progressSheet.getLastColumn() + 1; // 新規列のため +1
+            this.progressSheet.getRange(this.problemIdRowIndex + 1, problemCol).setValue(problemId);
+            this.progressSheet.getRange(this.problemNameRowIndex + 1, problemCol).setValue(problemName);
+        } else {
+            // スプレッドシートのために1始まりのインデックスに変換
+            problemCol += 1;
+            // 問題IDが見つかった場合は既存の列を更新
+            this.progressSheet.getRange(this.problemNameRowIndex + 1, problemCol).setValue(problemName);
+        }
+
+        // 進捗データを更新
+        this.progressSheet.getRange(studentRow, problemCol).setValue(nowDate); // 現在日時を設定
+    }
+ }

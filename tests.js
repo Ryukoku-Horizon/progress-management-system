@@ -36,3 +36,20 @@ function progressManagerTest () {
     console.log(plm._findStudentNumberRow("Y230190"));
     console.log(plm._findProblemIdColumn("python-prac3"));
 }
+
+function registerProgressTest() {
+    settings = getSettings();
+    console.log("settings:", settings);
+
+    const plm = new ProgressListManager(
+        settings.progressListSheetId,
+        settings.progressListProblemIdRowIndex,
+        settings.progressListProblemNameRowIndex,
+        settings.progressListStudentNumberColIndex,
+        settings.progressListStudentNameColIndex,
+        settings.progressListStudentCampusColIndex,
+        settings.progressListProblemStartColIndex
+    );
+
+    plm.registerProgress("Y230190", "松﨑望人", "瀬田", "python-prac3", "Python - 練習問題3");
+}

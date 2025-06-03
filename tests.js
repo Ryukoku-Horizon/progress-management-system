@@ -23,13 +23,14 @@ function formReponseTest (e = null) {
     settings = getSettings();
     console.log("settings:", settings);
     console.log("sheetId:", settings.memberListSheetId);
+    
 
     const frm = new FormResponseManager(settings.formResponseSheetId, e);
     const nlm = new NameListManager(
         settings.memberListSheetId, 
-        settings.memberListStudentNumberColIndex-1, 
-        settings.memberListStudentNameColIndex-1, 
-        settings.memberListStudentCampusColIndex-1
+        settings.memberListStudentNumberColIndex, 
+        settings.memberListStudentNameColIndex, 
+        settings.memberListStudentCampusColIndex
     );
     num = frm.getStudentNumber();
     console.log(num);

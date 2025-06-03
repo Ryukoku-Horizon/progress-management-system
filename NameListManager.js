@@ -20,9 +20,10 @@ class NameListManager {
             throw new Error(`ID ${nameListSheetId} のシートにデータがありません。`);
         }
 
-        this.numberColIndex = numberColIndex;
-        this.nameColIndex = nameColIndex;
-        this.campusColIndex = campusColIndex;
+        // 配列のインデックスに合わせるために1引く
+        this.numberColIndex = numberColIndex-1;
+        this.nameColIndex = nameColIndex-1;
+        this.campusColIndex = campusColIndex-1;
     }
 
     /**
@@ -32,9 +33,11 @@ class NameListManager {
      * @returns {string|null} 学生の名前。該当する学生が見つからない場合はnull
      */
     getName(studentNumber) {
+        studentNumber = studentNumber.toUpperCase(); // 大文字に変換
         for (let i = 0; i<this.nameListData.length; i++) {
             const row = this.nameListData[i];
-            if (row[this.numberColIndex] === studentNumber) {
+            // 必ず大文字同士で比較
+            if (row[this.numberColIndex].toUpperCase() === studentNumber) {
                 // 学籍番号が一致したら名前を返す
                 return row[this.nameColIndex];
             }
@@ -50,9 +53,11 @@ class NameListManager {
      * @returns {string|null} 学生のキャンパス情報。該当する学生が見つからない場合はnull
      */
     getCampus(studentNumber) {
+        studentNumber = studentNumber.toUpperCase(); // 大文字に変換
         for (let i = 0; i<this.nameListData.length; i++) {
             const row = this.nameListData[i];
-            if (row[this.numberColIndex] === studentNumber) {
+            // 必ず大文字同士で比較
+            if (row[this.numberColIndex].toUpperCase() === studentNumber) {
                 // 学籍番号が一致したら学舎を返す
                 return row[this.campusColIndex];
             }

@@ -48,7 +48,8 @@ function registerProgressTest() {
         settings.progressListStudentNumberColIndex,
         settings.progressListStudentNameColIndex,
         settings.progressListStudentCampusColIndex,
-        settings.progressListProblemStartColIndex
+        settings.progressListProblemStartColIndex,
+        settings.progressListLatestDateColIndex
     );
 
     plm.registerProgress("J230190", "望人", "瀬田", "python-t1", "Python - t1");

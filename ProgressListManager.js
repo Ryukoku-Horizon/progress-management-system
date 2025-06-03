@@ -11,7 +11,7 @@ class ProgressListManager {
      * @param {number} startFromColIndex - 進捗データが始まる1始まりの列インデックス。
      * @throws {Error} 指定したIDのシートが見つからない場合に発生します。
      */
-    constructor(sheetId, problemIdRowIndex, problemNameRowIndex, studentNumberColIndex, studentNameColIndex, studentCampusColIndex, startFromColIndex) {
+    constructor(sheetId, problemIdRowIndex, problemNameRowIndex, studentNumberColIndex, studentNameColIndex, studentCampusColIndex, startFromColIndex, LatestDateColIndex = 0) {
         this.progressSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetById(sheetId);
         if (!this.progressSheet) {
             throw new Error(`ID ${sheetId} のシートが見つかりません。`);
@@ -25,6 +25,7 @@ class ProgressListManager {
         this.studentNameColIndex = studentNameColIndex - 1;
         this.studentCampusColIndex = studentCampusColIndex - 1;
         this.startFromColIndex = startFromColIndex - 1;
+        this.LatestDateColIndex = LatestDateColIndex - 1;
     }
 
     /**
@@ -88,8 +89,11 @@ class ProgressListManager {
             this.progressSheet.getRange(this.problemNameRowIndex + 1, problemCol).setValue(problemName);
         }
 
-        // 進捗データを更新
+        // 最新の進捗日時を更新
         const nowDate = new Date(); // 現在日時を取得
+        this.progressSheet.getRange(studentRow, this.LatestDateColIndex+1).setValue(nowDate);
+
+        // 進捗データを更新
         this.progressSheet.getRange(studentRow, problemCol).setValue(nowDate); // 現在日時を設定
     }
  }

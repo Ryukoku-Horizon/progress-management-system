@@ -63,7 +63,7 @@ class ProgressListManager {
         let studentRow = this._findStudentNumberRow(studentNumber);
         if (studentRow === -1) {
             // 学生番号が見つからない場合は新規行を追加
-            studentRow = this.progressSheet.getLastRow();   // 新規行のため +1
+            studentRow = this.progressSheet.getLastRow() + 1;   // 新規行のため +1
             this.progressSheet.getRange(studentRow, this.studentNumberColIndex+1).setValue(studentNumber);
             this.progressSheet.getRange(studentRow, this.studentNameColIndex+1).setValue(studentName);
             this.progressSheet.getRange(studentRow, this.studentCampusColIndex+1).setValue(studentCampus);
@@ -89,6 +89,7 @@ class ProgressListManager {
         }
 
         // 進捗データを更新
+        const nowDate = new Date(); // 現在日時を取得
         this.progressSheet.getRange(studentRow, problemCol).setValue(nowDate); // 現在日時を設定
     }
  }

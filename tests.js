@@ -51,5 +51,5 @@ function registerProgressTest() {
         settings.progressListProblemStartColIndex
     );
 
-    plm.registerProgress("Y230190", "松﨑望人", "瀬田", "python-prac3", "Python - 練習問題3");
+    plm.registerProgress("J230190", "望人", "瀬田", "python-t1", "Python - t1");
 }

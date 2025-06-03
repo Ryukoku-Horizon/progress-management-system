@@ -18,28 +18,3 @@ function getProblemsMasterTest() {
         console.log(key, value);
     }
 }
-
-function formReponseTest (e = null) {
-    settings = getSettings();
-    console.log("settings:", settings);
-    console.log("sheetId:", settings.memberListSheetId);
-    
-
-    const frm = new FormResponseManager(settings.formResponseSheetId, e);
-    const nlm = new NameListManager(
-        settings.memberListSheetId, 
-        settings.memberListStudentNumberColIndex, 
-        settings.memberListStudentNameColIndex, 
-        settings.memberListStudentCampusColIndex
-    );
-    num = frm.getStudentNumber();
-    console.log(num);
-    console.log(frm.getTimestamp());
-    name = nlm.getName(num);
-    cam = nlm.getCampus(num);
-    console.log(`学籍番号: ${num}, 名前: ${name}, キャンパス: ${cam}`);
-    frm.addNameAndCampus(
-        name, settings.formResponseStudentNameColIndex, 
-        cam, settings.formResponseStudentCampusColIndex
-    );
-}

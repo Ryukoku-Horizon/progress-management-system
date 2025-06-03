@@ -1,6 +1,7 @@
 class NameListManager {
     /**
      * コンストラクター: NameListManagerのインスタンスを初期化する
+     * 引数の各種インデックスは1から始まる列番号を想定している（スプレッドシートのインデックスと合わせるため）
      * 
      * @param {string} nameListSheetId - データを読み込むスプレッドシートのID
      * @param {number} numberColIndex - 番号が記載されている列のインデックス

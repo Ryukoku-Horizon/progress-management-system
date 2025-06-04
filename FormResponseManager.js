@@ -39,7 +39,23 @@ class FormResponseManager {
         return this.namedValues['タイムスタンプ'][0]; // 1列目がタイムスタンプ
     }
 
-    
+    /**
+     * 問題名を取得します。
+     * 質問タイトルは指定が必要です。
+     *
+     * @param {string} questionTitle - 取得したい質問のタイトル
+     * @returns {string} 指定された質問タイトルに対応する最初の回答（問題名）
+     * @throws {Error} 指定された質問タイトルが見つからない場合にエラーをスローします。
+     */
+    getProblemName(questionTitle) {
+        // 指定された質問タイトルから問題名を取得
+        if (this.namedValues[questionTitle]) {
+            return this.namedValues[questionTitle][0]; // 1つ目の回答を返す
+        } else {
+            throw new Error(`質問タイトル "${questionTitle}" が見つかりません。`);
+        }
+    }
+
     /**
      * 変更が発生した行の指定された列に、名前とキャンパス情報を追加します。
      *
